@@ -1516,6 +1516,9 @@ function genMessage(msg, amt) {
     return t;
 }
 //firebase code
+await import("https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js");
+await import("https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js");
+await import("https://www.gstatic.com/firebasejs/10.10.0/firebase-database.js");
 async function connect(gid, name, icog, reqbody = !1) {
     botinfo.connected = false;
     botinfo.connecting = true;
@@ -1576,7 +1579,7 @@ async function connect(gid, name, icog, reqbody = !1) {
 }
 
 function bypassFilter(str) {
-    return "‮" + str.split("").reverse().join("");
+    return String.fromCharCode(8238) + str.split("").reverse().join("");
 }
 async function setVal(path, val) {
     if (!botinfo.connected) {
@@ -1594,4 +1597,5 @@ async function setUserVal(path, val) {
     await setVal(`/${botinfo.gid}/c/${botinfo.name}/${path}`, val);
 }
 updateStatus("Ready");
+
 //end
