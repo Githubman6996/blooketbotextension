@@ -1516,9 +1516,22 @@ function genMessage(msg, amt) {
     return t;
 }
 //firebase code
-await import("https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js");
-await import("https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js");
-await import("https://www.gstatic.com/firebasejs/10.10.0/firebase-database.js");
+import {
+            initializeApp,
+            deleteApp
+        } from 'https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js'
+        import {
+            getAuth,
+            signInWithCustomToken,
+            setPersistence
+        } from 'https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js'
+        import {
+            getDatabase,
+            ref,
+            set,
+            get,
+            onValue
+        } from 'https://www.gstatic.com/firebasejs/10.10.0/firebase-database.js'
 async function connect(gid, name, icog, reqbody = !1) {
     botinfo.connected = false;
     botinfo.connecting = true;
